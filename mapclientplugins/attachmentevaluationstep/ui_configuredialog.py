@@ -1,38 +1,18 @@
-"""
-MAP Client, a program to generate detailed musculoskeletal models for OpenSim.
-    Copyright (C) 2012  University of Auckland
-    
-This file is part of MAP Client. (http://launchpad.net/mapclient)
-
-    MAP Client is free software: you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
-
-    MAP Client is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
-
-    You should have received a copy of the GNU General Public License
-    along with MAP Client.  If not, see <http://www.gnu.org/licenses/>..
-"""
-
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file '/home/ju/work_projects/MAP/myplugins/mapclientplugins.attachmentevaluationstep/mapclientplugins/attachmentevaluationstep/qt/configuredialog.ui'
+# Form implementation generated from reading ui file 'qt/configuredialog.ui'
 #
-# Created: Wed Jul 22 14:52:29 2015
+# Created: Thu Jul 23 16:39:37 2015
 #      by: pyside-uic 0.2.15 running on PySide 1.2.1
 #
 # WARNING! All changes made in this file will be lost!
 
 from PySide import QtCore, QtGui
 
-class Ui_ConfigureDialog(object):
+class Ui_Dialog(object):
     def setupUi(self, Dialog):
         Dialog.setObjectName("Dialog")
-        Dialog.setGeometry(QtCore.QRect(0, 0, 418, 303))
+        Dialog.resize(418, 303)
         self.gridLayout = QtGui.QGridLayout(Dialog)
         self.gridLayout.setObjectName("gridLayout")
         self.configGroupBox = QtGui.QGroupBox(Dialog)
@@ -49,9 +29,9 @@ class Ui_ConfigureDialog(object):
         self.label1 = QtGui.QLabel(self.configGroupBox)
         self.label1.setObjectName("label1")
         self.formLayout.setWidget(1, QtGui.QFormLayout.LabelRole, self.label1)
-        self.lineEdit1 = QtGui.QLineEdit(self.configGroupBox)
-        self.lineEdit1.setObjectName("lineEdit1")
-        self.formLayout.setWidget(1, QtGui.QFormLayout.FieldRole, self.lineEdit1)
+        self.modelNameComboBox = QtGui.QComboBox(self.configGroupBox)
+        self.modelNameComboBox.setObjectName("modelNameComboBox")
+        self.formLayout.setWidget(1, QtGui.QFormLayout.FieldRole, self.modelNameComboBox)
         self.gridLayout.addWidget(self.configGroupBox, 0, 0, 1, 1)
         self.buttonBox = QtGui.QDialogButtonBox(Dialog)
         self.buttonBox.setOrientation(QtCore.Qt.Horizontal)
@@ -63,9 +43,11 @@ class Ui_ConfigureDialog(object):
         QtCore.QObject.connect(self.buttonBox, QtCore.SIGNAL("accepted()"), Dialog.accept)
         QtCore.QObject.connect(self.buttonBox, QtCore.SIGNAL("rejected()"), Dialog.reject)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
+        Dialog.setTabOrder(self.lineEdit0, self.modelNameComboBox)
+        Dialog.setTabOrder(self.modelNameComboBox, self.buttonBox)
 
     def retranslateUi(self, Dialog):
-        Dialog.setWindowTitle(QtGui.QApplication.translate("ConfigureDialog", "ConfigureDialog", None, QtGui.QApplication.UnicodeUTF8))
-        self.label0.setText(QtGui.QApplication.translate("ConfigureDialog", "identifier:  ", None, QtGui.QApplication.UnicodeUTF8))
-        self.label1.setText(QtGui.QApplication.translate("ConfigureDialog", "model name:  ", None, QtGui.QApplication.UnicodeUTF8))
+        Dialog.setWindowTitle(QtGui.QApplication.translate("Dialog", "ConfigureDialog", None, QtGui.QApplication.UnicodeUTF8))
+        self.label0.setText(QtGui.QApplication.translate("Dialog", "identifier:  ", None, QtGui.QApplication.UnicodeUTF8))
+        self.label1.setText(QtGui.QApplication.translate("Dialog", "model name:  ", None, QtGui.QApplication.UnicodeUTF8))
 

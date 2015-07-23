@@ -37,7 +37,7 @@ ATTACHMENT_FILES = {
                     # 'patella - left': os.path.join(SELF_DIRECTORY, 'data/'),
                     # 'hemipelvis - left': os.path.join(SELF_DIRECTORY, 'data/'),
                     }
-VALID_MODELS = set(ATTACHMENT_FILES.keys())
+VALID_MODELS = sorted(ATTACHMENT_FILES.keys())
 
 class Evaluator(object):
     """ Class for evaluating the coordinates of attachment sites on a model
@@ -75,6 +75,9 @@ class Evaluator(object):
         self.attachment_coordinates = {}
         for ri, r in enumerate(self._regions.regions):
             self.attachment_coordinates['_'.join([r.name, r.end, r.number])] = self._vertices[r.vertices,:].tolist()
+
+        for a, b in self.attachment_coordinates.items():
+            print(a, len(b))
 
     def make_labelled_mesh(self):
 

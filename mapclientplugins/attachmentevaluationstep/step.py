@@ -29,7 +29,7 @@ from PySide import QtCore
 
 from mapclient.mountpoints.workflowstep import WorkflowStepMountPoint
 from mapclientplugins.attachmentevaluationstep.configuredialog import ConfigureDialog
-from mapclientplugins.attachmentevaluationstep.evaluator import Evaluator
+from mapclientplugins.attachmentevaluationstep.evaluator import Evaluator, VALID_MODELS
 
 class attachmentevaluationStep(WorkflowStepMountPoint):
     '''
@@ -51,7 +51,7 @@ class attachmentevaluationStep(WorkflowStepMountPoint):
                       'http://physiomeproject.org/workflow/1.0/rdf-schema#attachmentcoordinates'))
         self._config = {}
         self._config['identifier'] = ''
-        self._config['model name'] = 'femur (left)'
+        self._config['model name'] = 'femur - left'
         self._evaluator = Evaluator()
 
     def execute(self):
@@ -61,6 +61,8 @@ class attachmentevaluationStep(WorkflowStepMountPoint):
         may be connected up to a button in a widget for example.
         '''
         # Put your execute step code here before calling the '_doneExecution' method.
+        self._evaluator.model_name = self._config['model name']
+        self._evaluator.evaluate_attachment_coordinates()
         self._doneExecution()
 
     def setPortData(self, index, dataIn):
@@ -78,7 +80,7 @@ class attachmentevaluationStep(WorkflowStepMountPoint):
         provides port for this step then the index can be ignored.
         '''
         # http://physiomeproject.org/workflow/1.0/rdf-schema#attachmentcoordinates
-        # dictionary of {attachment name: coordinates}
+        # dictionary of {attachment name strings: coordinates  list}
         return self._evaluator.attachment_coordinates
 
     def configure(self):
@@ -140,7 +142,7 @@ class attachmentevaluationStep(WorkflowStepMountPoint):
         conf = QtCore.QSettings(configuration_file, QtCore.QSettings.IniFormat)
         conf.beginGroup('config')
         self._config['identifier'] = conf.value('identifier', '')
-        self._config['model name'] = conf.value('model name', 'femur (left)')
+        self._config['model name'] = conf.value('model name', VALID_MODELS[0])
         conf.endGroup()
 
         d = ConfigureDialog()

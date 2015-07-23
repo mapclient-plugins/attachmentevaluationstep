@@ -19,7 +19,8 @@ This file is part of MAP Client. (http://launchpad.net/mapclient)
 """
 
 from PySide import QtGui
-from mapclientplugins.attachmentevaluationstep.ui_configuredialog import Ui_ConfigureDialog
+from mapclientplugins.attachmentevaluationstep.ui_configuredialog import Ui_Dialog
+from mapclientplugins.attachmentevaluationstep.evaluator import VALID_MODELS
 
 INVALID_STYLE_SHEET = 'background-color: rgba(239, 0, 0, 50)'
 DEFAULT_STYLE_SHEET = ''
@@ -35,7 +36,7 @@ class ConfigureDialog(QtGui.QDialog):
         '''
         QtGui.QDialog.__init__(self, parent)
         
-        self._ui = Ui_ConfigureDialog()
+        self._ui = Ui_Dialog()
         self._ui.setupUi(self)
 
         # Keep track of the previous identifier so that we can track changes
@@ -47,6 +48,9 @@ class ConfigureDialog(QtGui.QDialog):
         self.identifierOccursCount = None
 
         self._makeConnections()
+
+        for name in VALID_MODELS:
+            self._ui.modelNameComboBox.addItem(name)
 
     def _makeConnections(self):
         self._ui.lineEdit0.textChanged.connect(self.validate)
@@ -91,7 +95,7 @@ class ConfigureDialog(QtGui.QDialog):
         self._previousIdentifier = self._ui.lineEdit0.text()
         config = {}
         config['identifier'] = self._ui.lineEdit0.text()
-        config['model name'] = self._ui.lineEdit1.text()
+        config['model name'] = self._ui.modelNameComboBox.currentText()
         return config
 
     def setConfig(self, config):
@@ -102,5 +106,7 @@ class ConfigureDialog(QtGui.QDialog):
         '''
         self._previousIdentifier = config['identifier']
         self._ui.lineEdit0.setText(config['identifier'])
-        self._ui.lineEdit1.setText(config['model name'])
+        self._ui.modelNameComboBox.setCurrentIndex(
+            VALID_MODELS.index(config['model name'])
+            )
 
