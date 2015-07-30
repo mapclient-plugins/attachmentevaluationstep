@@ -38,7 +38,7 @@ class attachmentevaluationStep(WorkflowStepMountPoint):
     '''
 
     def __init__(self, location):
-        super(attachmentevaluationStep, self).__init__('attachmentevaluation', location)
+        super(attachmentevaluationStep, self).__init__('Attachment Site Evaluation', location)
         self._configured = False # A step cannot be executed until it has been configured.
         self._category = 'Anthropometry'
         # Add any other initialisation code here:
