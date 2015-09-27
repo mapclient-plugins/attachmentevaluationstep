@@ -33,9 +33,9 @@ SELF_DIRECTORY = os.path.split(__file__)[0]
 ATTACHMENT_FILES = {
                     'femur - left': os.path.join(SELF_DIRECTORY, 'data/FEMUR_LEFT_ATTACHMENT_ATLAS24x24.xml'),
                     'tibia - left': os.path.join(SELF_DIRECTORY, 'data/TIBIA_ATTACHMENT_UPD_ATLAS24x24.xml'),
-                    # 'fibula - left': os.path.join(SELF_DIRECTORY, 'data/'),
+                    'fibula - left': os.path.join(SELF_DIRECTORY, 'data/FIBULA_LEFT_ATTACHMENT_ATLAS24x24.xml'),
                     # 'patella - left': os.path.join(SELF_DIRECTORY, 'data/'),
-                    # 'hemipelvis - left': os.path.join(SELF_DIRECTORY, 'data/'),
+                    'hemipelvis - left': os.path.join(SELF_DIRECTORY, 'data/PELVIS_LH_ATTACHMENT_ATLAS24x24.xml'),
                     }
 VALID_MODELS = sorted(ATTACHMENT_FILES.keys())
 
