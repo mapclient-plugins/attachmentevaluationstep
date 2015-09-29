@@ -48,7 +48,7 @@ class attachmentevaluationStep(WorkflowStepMountPoint):
                       'ju#fieldworkmodel'))
         self.addPort(('http://physiomeproject.org/workflow/1.0/rdf-schema#port',
                       'http://physiomeproject.org/workflow/1.0/rdf-schema#provides',
-                      'http://physiomeproject.org/workflow/1.0/rdf-schema#dict'))
+                      'http://physiomeproject.org/workflow/1.0/rdf-schema#pointclouddict'))
         self._config = {}
         self._config['identifier'] = ''
         self._config['model name'] = 'femur - left'
