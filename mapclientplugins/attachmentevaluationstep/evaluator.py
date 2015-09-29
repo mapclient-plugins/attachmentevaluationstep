@@ -51,6 +51,7 @@ class Evaluator(object):
         self._regions = None
         self._vertices = None
         self._faces = None
+        self._matpoints = None
 
     @property
     def model_name(self):
@@ -68,7 +69,7 @@ class Evaluator(object):
         self._regions = BoneAttachmentRegions()
         self._regions.from_xml(ATTACHMENT_FILES[self.model_name])
     
-    def evaluate_attachment_coordinates(self):
+    def evaluate_attachment_coordinates_old(self):
         disc = [int(x) for x in self._regions.atlas_disc.split('x')]
         self._vertices, self._faces = self.model.triangulate(disc, merge=True)
 
@@ -78,6 +79,13 @@ class Evaluator(object):
 
         for a, b in self.attachment_coordinates.items():
             print(a, len(b))
+
+    def evaluate_attachment_coordinates(self):
+        self.attachment_coordinates = {}
+        for ri, r in enumerate(self._regions.regions):
+            self.attachment_coordinates[
+                '_'.join([r.name, r.end, r.number])
+                ] = self.model.evaluate_geometric_field_at_element_points_3(r.matpoints).T
 
     def make_labelled_mesh(self):
 
