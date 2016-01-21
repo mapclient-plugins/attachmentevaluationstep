@@ -24,9 +24,9 @@ Class for evaluating attachment site coordinates on a fieldwork model
 
 import os
 import numpy as np
-from gias.common import simplemesh_tools
-from gias.musculoskeletal.bonemodels.modelcore import BoneAttachmentRegions
-from fieldwork.field import geometric_field
+from gias2.mesh import simplemesh
+from gias2.musculoskeletal.bonemodels.modelcore import BoneAttachmentRegions
+from gias2.fieldwork.field import geometric_field
 
 SELF_DIRECTORY = os.path.split(__file__)[0]
 
@@ -89,7 +89,7 @@ class Evaluator(object):
 
     def make_labelled_mesh(self):
 
-        mesh = simplemesh_tools.simpleMesh(v=self._vertices, f=self._faces)
+        mesh = simplemesh.SimpleMesh(v=self._vertices, f=self._faces)
 
         vert_labels = np.zeros(len(self._vertices), dtype=int)
         # face_labels = np.zeros(len(self._faces), dtype=int)
