@@ -19,7 +19,11 @@ This file is part of MAP Client. (http://launchpad.net/mapclient)
 """
 
 from setuptools import setup, find_packages
+from setuptools.command.install import install
 import sys, os, io
+
+
+SETUP_DIR = os.path.dirname(os.path.abspath(__file__))
 
 def readfile(filename, split=False):
     with io.open(filename, encoding="utf-8") as stream:
@@ -28,8 +32,15 @@ def readfile(filename, split=False):
         return stream.read()
 
 readme = readfile("README.md", split=True)[3:]  # skip title
-requires = readfile("requirements.txt", split=True)
+requires = [] #  readfile("requirements.txt", split=True)
 license = readfile("LICENSE")
+
+class InstallCommand(install):
+
+  def run(self):
+    install.run(self)
+    import subprocess
+    subprocess.call(['pip', 'install', '-r', os.path.join(SETUP_DIR, 'requirements.txt')])
 
 setup(name=u'mapclientplugins.attachmentevaluationstep',
     version='0.1.0',
@@ -40,6 +51,7 @@ setup(name=u'mapclientplugins.attachmentevaluationstep',
         "License :: OSI Approved :: Apache Software License",
         "Programming Language :: Python",
     ],
+    cmdclass={'install': InstallCommand},
     author=u'Ju Zhang',
     author_email='',
       url='https://github.com/mapclient-plugins/fieldworkgait2392geomstep',
