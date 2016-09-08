@@ -1,1 +1,1 @@
-https://bitbucket.org/jangle/gias2/downloads/gias2-0.4.4-py2-none-any.whl#egg=gias2
+https://bitbucket.org/jangle/gias2/downloads/gias2-0.4.4-py2-none-any.tar.gz#egg=gias2
