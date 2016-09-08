@@ -22,6 +22,8 @@ MAP Client Plugin
 '''
 __version__ = '0.1.0'
 __author__ = 'Ju Zhang'
+__stepname__ = 'Attachment Evaluation'
+__location__ = 'https://github.com/mapclient-plugins/attachmentevaluationstep/archive/v0.1.0.zip'
 
 
 # import class that derives itself from the step mountpoint.
