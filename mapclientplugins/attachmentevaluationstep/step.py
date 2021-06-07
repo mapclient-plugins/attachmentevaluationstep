@@ -22,10 +22,7 @@ This file is part of MAP Client. (http://launchpad.net/mapclient)
 '''
 MAP Client Plugin Step
 '''
-import os
 import json
-
-from PySide import QtGui
 
 from mapclient.mountpoints.workflowstep import WorkflowStepMountPoint
 from mapclientplugins.attachmentevaluationstep.configuredialog import ConfigureDialog
