@@ -1,4 +1,3 @@
-
 """
 MAP Client, a program to generate detailed musculoskeletal models for OpenSim.
     Copyright (C) 2012  University of Auckland
@@ -28,6 +27,7 @@ from mapclient.mountpoints.workflowstep import WorkflowStepMountPoint
 from mapclientplugins.attachmentevaluationstep.configuredialog import ConfigureDialog
 from mapclientplugins.attachmentevaluationstep.evaluator import Evaluator, VALID_MODELS
 
+
 class attachmentevaluationStep(WorkflowStepMountPoint):
     '''
     Skeleton step which is intended to be a helpful starting point
@@ -36,7 +36,7 @@ class attachmentevaluationStep(WorkflowStepMountPoint):
 
     def __init__(self, location):
         super(attachmentevaluationStep, self).__init__('Attachment Site Evaluation', location)
-        self._configured = False # A step cannot be executed until it has been configured.
+        self._configured = False  # A step cannot be executed until it has been configured.
         self._category = 'Anthropometry'
         # Add any other initialisation code here:
         # Ports:
@@ -68,7 +68,7 @@ class attachmentevaluationStep(WorkflowStepMountPoint):
         The index is the index of the port in the port list.  If there is only one
         uses port for this step then the index can be ignored.
         '''
-        self._evaluator.model = dataIn # ju#fieldworkmodel
+        self._evaluator.model = dataIn  # ju#fieldworkmodel
 
     def getPortData(self, index):
         '''
@@ -93,10 +93,10 @@ class attachmentevaluationStep(WorkflowStepMountPoint):
         dlg.setConfig(self._config)
         dlg.validate()
         dlg.setModal(True)
-        
+
         if dlg.exec_():
             self._config = dlg.getConfig()
-        
+
         self._configured = dlg.validate()
         self._configuredObserver()
 
@@ -130,5 +130,3 @@ class attachmentevaluationStep(WorkflowStepMountPoint):
         d.identifierOccursCount = self._identifierOccursCount
         d.setConfig(self._config)
         self._configured = d.validate()
-
-
