@@ -1,53 +1,73 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'qt/configuredialog.ui'
-#
-# Created: Thu Jul 23 16:39:37 2015
-#      by: pyside-uic 0.2.15 running on PySide 1.2.1
-#
-# WARNING! All changes made in this file will be lost!
+################################################################################
+## Form generated from reading UI file 'configuredialog.ui'
+##
+## Created by: Qt User Interface Compiler version 5.15.2
+##
+## WARNING! All changes made in this file will be lost when recompiling UI file!
+################################################################################
 
-from PySide import QtCore, QtGui
+from PySide2.QtCore import *
+from PySide2.QtGui import *
+from PySide2.QtWidgets import *
+
 
 class Ui_Dialog(object):
     def setupUi(self, Dialog):
-        Dialog.setObjectName("Dialog")
+        if not Dialog.objectName():
+            Dialog.setObjectName(u"Dialog")
         Dialog.resize(418, 303)
-        self.gridLayout = QtGui.QGridLayout(Dialog)
-        self.gridLayout.setObjectName("gridLayout")
-        self.configGroupBox = QtGui.QGroupBox(Dialog)
-        self.configGroupBox.setTitle("")
-        self.configGroupBox.setObjectName("configGroupBox")
-        self.formLayout = QtGui.QFormLayout(self.configGroupBox)
-        self.formLayout.setObjectName("formLayout")
-        self.label0 = QtGui.QLabel(self.configGroupBox)
-        self.label0.setObjectName("label0")
-        self.formLayout.setWidget(0, QtGui.QFormLayout.LabelRole, self.label0)
-        self.lineEdit0 = QtGui.QLineEdit(self.configGroupBox)
-        self.lineEdit0.setObjectName("lineEdit0")
-        self.formLayout.setWidget(0, QtGui.QFormLayout.FieldRole, self.lineEdit0)
-        self.label1 = QtGui.QLabel(self.configGroupBox)
-        self.label1.setObjectName("label1")
-        self.formLayout.setWidget(1, QtGui.QFormLayout.LabelRole, self.label1)
-        self.modelNameComboBox = QtGui.QComboBox(self.configGroupBox)
-        self.modelNameComboBox.setObjectName("modelNameComboBox")
-        self.formLayout.setWidget(1, QtGui.QFormLayout.FieldRole, self.modelNameComboBox)
+        self.gridLayout = QGridLayout(Dialog)
+        self.gridLayout.setObjectName(u"gridLayout")
+        self.configGroupBox = QGroupBox(Dialog)
+        self.configGroupBox.setObjectName(u"configGroupBox")
+        self.formLayout = QFormLayout(self.configGroupBox)
+        self.formLayout.setObjectName(u"formLayout")
+        self.label0 = QLabel(self.configGroupBox)
+        self.label0.setObjectName(u"label0")
+
+        self.formLayout.setWidget(0, QFormLayout.LabelRole, self.label0)
+
+        self.lineEdit0 = QLineEdit(self.configGroupBox)
+        self.lineEdit0.setObjectName(u"lineEdit0")
+
+        self.formLayout.setWidget(0, QFormLayout.FieldRole, self.lineEdit0)
+
+        self.label1 = QLabel(self.configGroupBox)
+        self.label1.setObjectName(u"label1")
+
+        self.formLayout.setWidget(1, QFormLayout.LabelRole, self.label1)
+
+        self.modelNameComboBox = QComboBox(self.configGroupBox)
+        self.modelNameComboBox.setObjectName(u"modelNameComboBox")
+
+        self.formLayout.setWidget(1, QFormLayout.FieldRole, self.modelNameComboBox)
+
+
         self.gridLayout.addWidget(self.configGroupBox, 0, 0, 1, 1)
-        self.buttonBox = QtGui.QDialogButtonBox(Dialog)
-        self.buttonBox.setOrientation(QtCore.Qt.Horizontal)
-        self.buttonBox.setStandardButtons(QtGui.QDialogButtonBox.Cancel|QtGui.QDialogButtonBox.Ok)
-        self.buttonBox.setObjectName("buttonBox")
+
+        self.buttonBox = QDialogButtonBox(Dialog)
+        self.buttonBox.setObjectName(u"buttonBox")
+        self.buttonBox.setOrientation(Qt.Horizontal)
+        self.buttonBox.setStandardButtons(QDialogButtonBox.Cancel|QDialogButtonBox.Ok)
+
         self.gridLayout.addWidget(self.buttonBox, 1, 0, 1, 1)
 
+        QWidget.setTabOrder(self.lineEdit0, self.modelNameComboBox)
+        QWidget.setTabOrder(self.modelNameComboBox, self.buttonBox)
+
         self.retranslateUi(Dialog)
-        QtCore.QObject.connect(self.buttonBox, QtCore.SIGNAL("accepted()"), Dialog.accept)
-        QtCore.QObject.connect(self.buttonBox, QtCore.SIGNAL("rejected()"), Dialog.reject)
-        QtCore.QMetaObject.connectSlotsByName(Dialog)
-        Dialog.setTabOrder(self.lineEdit0, self.modelNameComboBox)
-        Dialog.setTabOrder(self.modelNameComboBox, self.buttonBox)
+        self.buttonBox.accepted.connect(Dialog.accept)
+        self.buttonBox.rejected.connect(Dialog.reject)
+
+        QMetaObject.connectSlotsByName(Dialog)
+    # setupUi
 
     def retranslateUi(self, Dialog):
-        Dialog.setWindowTitle(QtGui.QApplication.translate("Dialog", "ConfigureDialog", None, QtGui.QApplication.UnicodeUTF8))
-        self.label0.setText(QtGui.QApplication.translate("Dialog", "identifier:  ", None, QtGui.QApplication.UnicodeUTF8))
-        self.label1.setText(QtGui.QApplication.translate("Dialog", "model name:  ", None, QtGui.QApplication.UnicodeUTF8))
+        Dialog.setWindowTitle(QCoreApplication.translate("Dialog", u"ConfigureDialog", None))
+        self.configGroupBox.setTitle("")
+        self.label0.setText(QCoreApplication.translate("Dialog", u"identifier:  ", None))
+        self.label1.setText(QCoreApplication.translate("Dialog", u"model name:  ", None))
+    # retranslateUi
 

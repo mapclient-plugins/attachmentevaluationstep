@@ -31,13 +31,14 @@ from gias2.fieldwork.field import geometric_field
 SELF_DIRECTORY = os.path.split(__file__)[0]
 
 ATTACHMENT_FILES = {
-                    'femur - left': os.path.join(SELF_DIRECTORY, 'data/FEMUR_LEFT_ATTACHMENT_ATLAS24x24.xml'),
-                    'tibia - left': os.path.join(SELF_DIRECTORY, 'data/TIBIA_ATTACHMENT_UPD_ATLAS24x24.xml'),
-                    'fibula - left': os.path.join(SELF_DIRECTORY, 'data/FIBULA_LEFT_ATTACHMENT_ATLAS24x24.xml'),
-                    # 'patella - left': os.path.join(SELF_DIRECTORY, 'data/'),
-                    'hemipelvis - left': os.path.join(SELF_DIRECTORY, 'data/PELVIS_LH_ATTACHMENT_ATLAS24x24.xml'),
-                    }
+    'femur - left': os.path.join(SELF_DIRECTORY, 'data/FEMUR_LEFT_ATTACHMENT_ATLAS24x24.xml'),
+    'tibia - left': os.path.join(SELF_DIRECTORY, 'data/TIBIA_ATTACHMENT_UPD_ATLAS24x24.xml'),
+    'fibula - left': os.path.join(SELF_DIRECTORY, 'data/FIBULA_LEFT_ATTACHMENT_ATLAS24x24.xml'),
+    # 'patella - left': os.path.join(SELF_DIRECTORY, 'data/'),
+    'hemipelvis - left': os.path.join(SELF_DIRECTORY, 'data/PELVIS_LH_ATTACHMENT_ATLAS24x24.xml'),
+}
 VALID_MODELS = sorted(ATTACHMENT_FILES.keys())
+
 
 class Evaluator(object):
     """ Class for evaluating the coordinates of attachment sites on a model
@@ -68,14 +69,14 @@ class Evaluator(object):
     def _load_attachment_file(self):
         self._regions = BoneAttachmentRegions()
         self._regions.from_xml(ATTACHMENT_FILES[self.model_name])
-    
+
     def evaluate_attachment_coordinates_old(self):
         disc = [int(x) for x in self._regions.atlas_disc.split('x')]
         self._vertices, self._faces = self.model.triangulate(disc, merge=True)
 
         self.attachment_coordinates = {}
         for ri, r in enumerate(self._regions.regions):
-            self.attachment_coordinates['_'.join([r.name, r.end, r.number])] = self._vertices[r.vertices,:].tolist()
+            self.attachment_coordinates['_'.join([r.name, r.end, r.number])] = self._vertices[r.vertices, :].tolist()
 
         for a, b in self.attachment_coordinates.items():
             print(a, len(b))
@@ -85,7 +86,7 @@ class Evaluator(object):
         for ri, r in enumerate(self._regions.regions):
             self.attachment_coordinates[
                 '_'.join([r.name, r.end, r.number])
-                ] = self.model.evaluate_geometric_field_at_element_points_3(r.matpoints).T
+            ] = self.model.evaluate_geometric_field_at_element_points_3(r.matpoints).T
 
     def make_labelled_mesh(self):
 
@@ -95,8 +96,8 @@ class Evaluator(object):
         # face_labels = np.zeros(len(self._faces), dtype=int)
         code = {}
         for ri, r in enumerate(self._regions.regions):
-            vert_labels[r.vertices] = ri+1
+            vert_labels[r.vertices] = ri + 1
             # face_labels[r.faces] = ri+1
-            code[ri+1] = (r.name, r.end, r.number)
+            code[ri + 1] = (r.name, r.end, r.number)
 
         return mesh, vert_labels, face_labels, code
