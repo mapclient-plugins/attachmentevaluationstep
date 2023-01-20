@@ -1,1 +1,3 @@
-https://bitbucket.org/jangle/gias2/downloads/gias2-0.4.4.tar.gz#egg=gias2
+gias3.mesh
+gias3.musculoskeletal
+gias3.fieldwork

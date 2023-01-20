@@ -18,15 +18,10 @@ This file is part of MAP Client. (http://launchpad.net/mapclient)
     along with MAP Client.  If not, see <http://www.gnu.org/licenses/>..
 """
 
-"""
-Class for evaluating attachment site coordinates on a fieldwork model
-"""
-
 import os
 import numpy as np
-from gias2.mesh import simplemesh
-from gias2.musculoskeletal.bonemodels.modelcore import BoneAttachmentRegions
-from gias2.fieldwork.field import geometric_field
+from gias3.mesh import simplemesh
+from gias3.musculoskeletal.bonemodels.modelcore import BoneAttachmentRegions
 
 SELF_DIRECTORY = os.path.split(__file__)[0]
 
